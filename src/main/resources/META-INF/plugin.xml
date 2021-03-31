@@ -15,11 +15,11 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <!-- git push前执行-->
+        <!--<prePushHandler implementation="com.hhs.h.idea.plugin.extensions.PrePushHandlerApiDocHandler"/>-->
+        <!--git commit前校验并执行-->
+        <checkinHandlerFactory implementation="com.hhs.h.idea.plugin.extensions.CheckinHandlerFactoryApiDocHandler"/>
     </extensions>
-
-    <actions>
-        <!-- Add your actions here -->
-    </actions>
 
     <actions>
 
