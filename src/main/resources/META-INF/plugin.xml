@@ -1,11 +1,10 @@
 <idea-plugin>
     <id>com.hhs.h-idea-plugin</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>h-idea-plugin</name>
+    <vendor email="" url="">h-idea-plugin</vendor>
 
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    idea插件练手
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -21,4 +20,18 @@
     <actions>
         <!-- Add your actions here -->
     </actions>
+
+    <actions>
+
+        <!--apidocs start-->
+
+        <!--projectView 右键action-->
+        <action id="com.hhs.h.idea.plugin.action.ApiDocsAction" class="com.hhs.h.idea.plugin.action.ApiDocsAction" text="生成ApiDocs" description="选取类生成ApiDocs">
+            <add-to-group group-id="ProjectViewPopupMenuModifyGroup" anchor="last"/>
+        </action>
+
+        <!--apidocs end-->
+
+    </actions>
+
 </idea-plugin>
