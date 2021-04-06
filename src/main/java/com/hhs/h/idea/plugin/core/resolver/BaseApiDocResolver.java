@@ -2,6 +2,7 @@ package com.hhs.h.idea.plugin.core.resolver;
 
 import com.hhs.h.idea.plugin.module.dto.ApiClassDTO;
 import com.hhs.h.idea.plugin.module.dto.ApiDocDTO;
+import com.hhs.h.idea.plugin.utils.ArrayUtil;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
@@ -9,7 +10,6 @@ import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.util.PsiTreeUtil;
-import org.apache.commons.collections.CollectionUtils;
 
 import java.util.List;
 import java.util.Objects;
@@ -31,7 +31,7 @@ public abstract class BaseApiDocResolver {
      * @return ApiDocDTO 不符合返回null
      */
     public ApiDocDTO resolver(Project project, List<VirtualFile> virtualFiles) {
-        if (CollectionUtils.isEmpty(virtualFiles)) {
+        if (ArrayUtil.isEmpty(virtualFiles)) {
             return null;
         }
 
@@ -40,7 +40,7 @@ public abstract class BaseApiDocResolver {
                 .filter(this::support)
                 .collect(Collectors.toList());
 
-        if (CollectionUtils.isEmpty(filterFileList)) {
+        if (ArrayUtil.isEmpty(filterFileList)) {
             return null;
         }
 
@@ -68,7 +68,7 @@ public abstract class BaseApiDocResolver {
                 .filter(Objects::nonNull)
                 .collect(Collectors.toList());
 
-        if (CollectionUtils.isEmpty(apiClassDTOS)) {
+        if (ArrayUtil.isEmpty(apiClassDTOS)) {
             return null;
         }
 

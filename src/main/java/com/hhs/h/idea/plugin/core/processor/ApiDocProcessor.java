@@ -8,7 +8,7 @@ import com.hhs.h.idea.plugin.module.dto.ApiDocDTO;
 import com.intellij.ide.highlighter.JavaFileType;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
-import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang.ArrayUtils;
 
 import java.util.List;
 

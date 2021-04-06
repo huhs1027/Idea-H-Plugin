@@ -1,8 +1,8 @@
 package com.hhs.h.idea.plugin.core.processor;
 
+import com.hhs.h.idea.plugin.utils.ArrayUtil;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.vfs.VirtualFile;
-import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
 
@@ -15,13 +15,13 @@ public abstract class AbsProcessor {
     /**
      * 递归选择文件类型
      *
-     * @param filterFileList 结果文件列表
+     * @param filterFileList   结果文件列表
      * @param virtualFileArray 表示文件(目录)列表
-     * @param fileType 文件类型
+     * @param fileType         文件类型
      */
     protected void recursionSelectFileTypeAndCache(List<VirtualFile> filterFileList, VirtualFile[] virtualFileArray, FileType fileType) {
 
-        if (filterFileList == null || ArrayUtils.isEmpty(virtualFileArray) || fileType == null) {
+        if (filterFileList == null || ArrayUtil.isEmpty(virtualFileArray) || fileType == null) {
             return;
         }
 
