@@ -13,7 +13,13 @@ import org.jetbrains.annotations.NotNull;
 public class CheckinHandlerFactoryApiDocHandler extends CheckinHandlerFactory {
 
     @Override
-    public @NotNull CheckinHandler createHandler(@NotNull CheckinProjectPanel panel, @NotNull CommitContext commitContext) {
-        return null;
+    public @NotNull
+    CheckinHandler createHandler(@NotNull CheckinProjectPanel panel, @NotNull CommitContext commitContext) {
+        return new CheckinHandler() {
+            @Override
+            public void checkinSuccessful() {
+                // todo
+            }
+        };
     }
 }

@@ -10,6 +10,8 @@ import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.util.PsiTreeUtil;
+import git4idea.branch.GitBranchUtil;
+import git4idea.repo.GitRepository;
 
 import java.util.List;
 import java.util.Objects;
@@ -26,7 +28,7 @@ public abstract class BaseApiDocResolver {
     /**
      * 解析文件->ApiDocDTO
      *
-     * @param project 表示当前项目
+     * @param project      表示当前项目
      * @param virtualFiles 筛选出来的,选取范围内的,所有java文件
      * @return ApiDocDTO 不符合返回null
      */
@@ -50,7 +52,7 @@ public abstract class BaseApiDocResolver {
     /**
      * 创建爱你apiDoc
      *
-     * @param project 当前项目
+     * @param project      当前项目
      * @param virtualFiles 虚拟文件列表
      * @return ApiDocDTO
      */
@@ -74,7 +76,11 @@ public abstract class BaseApiDocResolver {
 
         ApiDocDTO apiDocDTO = new ApiDocDTO();
         apiDocDTO.setApiClassDTOList(apiClassDTOS);
-        // todo method,field转换待完成
+        // 拿到git分支名称
+        GitRepository currentRepository = GitBranchUtil.getCurrentRepository(project);
+        if (currentRepository != null) {
+            apiDocDTO.setGitBranchName(currentRepository.getCurrentBranchName());
+        }
         return apiDocDTO;
     }
 
@@ -97,7 +103,7 @@ public abstract class BaseApiDocResolver {
     /**
      * 虚拟文件转 psi文件
      *
-     * @param project 当前项目
+     * @param project     当前项目
      * @param virtualFile 虚拟文件
      * @return PsiFile
      */

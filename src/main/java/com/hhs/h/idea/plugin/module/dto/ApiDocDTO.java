@@ -15,6 +15,19 @@ public class ApiDocDTO {
      */
     private List<ApiClassDTO> apiClassDTOList;
 
+    /**
+     * git分支名称
+     */
+    private String gitBranchName;
+
+    public String getGitBranchName() {
+        return gitBranchName;
+    }
+
+    public void setGitBranchName(String gitBranchName) {
+        this.gitBranchName = gitBranchName;
+    }
+
     public List<ApiClassDTO> getApiClassDTOList() {
         return apiClassDTOList;
     }

@@ -43,7 +43,7 @@ public class ApiDocsAction extends AnAction {
             });
 
             // 执行完了之后打印日志
-            ApplicationManager.getApplication().invokeLater(() -> Messages.showMessageDialog(project, "这是消息体", "这是标题", Messages.getInformationIcon()));
+            ApplicationManager.getApplication().invokeLater(() -> Messages.showMessageDialog(project, "apiDocs生成成功", "apiDocs", Messages.getInformationIcon()));
         });
 
     }
