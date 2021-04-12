@@ -16,7 +16,7 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <!-- git push前执行-->
+        <!-- git push前执行 2016.1不支持-->
         <!--<prePushHandler implementation="com.hhs.h.idea.plugin.extensions.PrePushHandlerApiDocHandler"/>-->
         <!--git commit前校验并执行-->
         <checkinHandlerFactory implementation="com.hhs.h.idea.plugin.extensions.CheckinHandlerFactoryApiDocHandler"/>

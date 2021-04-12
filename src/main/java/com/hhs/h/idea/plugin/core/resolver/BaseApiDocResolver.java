@@ -50,21 +50,17 @@ public abstract class BaseApiDocResolver {
     }
 
     /**
-     * 创建爱你apiDoc
+     * 创建apiDoc
      *
      * @param project      当前项目
      * @param virtualFiles 虚拟文件列表
      * @return ApiDocDTO
      */
     private ApiDocDTO buildApiDoc(Project project, List<VirtualFile> virtualFiles) {
-        // 其他一些参数
-
-        List<ApiClassDTO> apiClassDTOS = virtualFiles.stream().map(v -> {
-            // psiFile
-            PsiJavaFile psiFile = this.toPsiFile(project, v);
-            // class controller层应该不会有多个类定义, 所以不考虑递归
-            PsiClass psiClass = PsiTreeUtil.getChildOfType(psiFile, PsiClass.class);
-            return this.toApiClassDTO(psiClass);
+        List<ApiClassDTO> apiClassDTOS = virtualFiles.stream().map(virtualFile -> {
+            PsiJavaFile psiFile = this.toPsiFile(project, virtualFile);
+            // 转换java类描述
+            return this.buildApiClass(psiFile);
         })
                 // 过滤null
                 .filter(Objects::nonNull)
@@ -84,21 +80,13 @@ public abstract class BaseApiDocResolver {
         return apiDocDTO;
     }
 
+
     /**
      * 转类型描述
      *
      * @param psiClass psiClass
      * @return ApiClassDTO
      */
-    private ApiClassDTO toApiClassDTO(PsiClass psiClass) {
-        if (psiClass == null) {
-            return null;
-        }
-
-        ApiClassDTO apiClassDTO = new ApiClassDTO();
-        apiClassDTO.setQualifiedName(psiClass.getQualifiedName());
-        return apiClassDTO;
-    }
 
     /**
      * 虚拟文件转 psi文件
@@ -107,7 +95,7 @@ public abstract class BaseApiDocResolver {
      * @param virtualFile 虚拟文件
      * @return PsiFile
      */
-    private PsiJavaFile toPsiFile(Project project, VirtualFile virtualFile) {
+    protected PsiJavaFile toPsiFile(Project project, VirtualFile virtualFile) {
         return (PsiJavaFile) PsiManager.getInstance(project).findFile(virtualFile);
     }
 
@@ -118,5 +106,13 @@ public abstract class BaseApiDocResolver {
      * @return true符合 false不符合
      */
     protected abstract boolean support(VirtualFile virtualFile);
+
+    /**
+     * 虚拟文件转java类描述，子类实现
+     *
+     * @param psiJavaFile psi java文件
+     * @return ApiClassDTO
+     */
+    protected abstract ApiClassDTO buildApiClass(PsiJavaFile psiJavaFile);
 
 }

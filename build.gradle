@@ -19,7 +19,7 @@ dependencies {
 
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
-    version '2017.1'
+    version '2016.1'
     plugins = ['git4idea']
 }
 patchPluginXml {

@@ -28,4 +28,22 @@ public class ArrayUtil {
         return e == null || e.length == 0;
     }
 
+    /**
+     * 判断数组舒服包含元素
+     *
+     * @param e     元素
+     * @param array 数组
+     * @return true包含 false不包含
+     */
+    public static <E> boolean contains(E[] array, E e) {
+        if (isEmpty(array)) {
+            return false;
+        }
+        for (E e1 : array) {
+            if (e1.equals(e)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
