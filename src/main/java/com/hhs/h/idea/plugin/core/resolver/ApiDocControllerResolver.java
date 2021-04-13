@@ -10,7 +10,6 @@ import com.intellij.codeInsight.AnnotationUtil;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.*;
 import com.intellij.psi.javadoc.PsiDocComment;
-import com.intellij.psi.javadoc.PsiDocTag;
 import com.intellij.psi.util.PsiTreeUtil;
 import org.apache.commons.lang.StringUtils;
 
@@ -136,6 +135,8 @@ public class ApiDocControllerResolver extends BaseApiDocResolver {
         }
 
         // 获取入参类型
+        ArrayList<ApiFieldDTO> apiFieldDTOList = Lists.newArrayList();
+
         for (PsiParameter psiParameter : parameterList.getParameters()) {
             PsiType type = psiParameter.getType();
             // 过滤无需展示的类型
@@ -143,13 +144,26 @@ public class ApiDocControllerResolver extends BaseApiDocResolver {
                 continue;
             }
 
-            PsiDocTag[] tags = psiMethod.getDocComment().getTags();
+            // 解析参数，组装参数DTO
+            String paramName = psiParameter.getName();
+            String paramDesc = JavadocUtils.findTagDesc(psiMethod.getDocComment(), "param", paramName);
 
-            // todo 解析参数，组装成ApiFieldDTO
+            // 组装
+            apiFieldDTOList.add(buildApiField(type, paramName, paramDesc));
         }
 
-        return null;
+        return apiFieldDTOList;
 
+    }
+
+    private ApiFieldDTO buildApiField(PsiType type, String name, String desc) {
+        ApiFieldDTO apiField = new ApiFieldDTO();
+        apiField.setDesc(desc);
+        apiField.setName(name);
+        apiField.setType(type.getPresentableText());
+        //apiField.setChildren(extractFieldList(type, 0));
+
+        return apiField;
     }
 
 

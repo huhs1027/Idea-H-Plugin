@@ -36,11 +36,6 @@ public class ApiFieldDTO {
     private Boolean required;
 
     /**
-     * 字段说明
-     */
-    private String description;
-
-    /**
      * 子字段
      */
     private List<ApiFieldDTO> children;
@@ -88,14 +83,6 @@ public class ApiFieldDTO {
 
     public void setRequired(Boolean required) {
         this.required = required;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public List<ApiFieldDTO> getChildren() {

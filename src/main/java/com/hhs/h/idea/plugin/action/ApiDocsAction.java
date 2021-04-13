@@ -28,6 +28,7 @@ public class ApiDocsAction extends AnAction {
      */
     @Override
     public void actionPerformed(AnActionEvent e) {
+        log.info("生成ApiDocs....");
         // 获取项目信息
         Project project = e.getData(PlatformDataKeys.PROJECT);
 

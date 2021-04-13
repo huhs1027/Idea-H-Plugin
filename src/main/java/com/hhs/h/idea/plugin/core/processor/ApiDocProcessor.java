@@ -34,9 +34,10 @@ public class ApiDocProcessor extends AbsProcessor {
     /**
      * 执行处理逻辑
      *
-     * @param project 项目
+     * @param project      项目
      * @param virtualFiles 虚拟文件(目录)
      */
+    @Override
     public void process(Project project, VirtualFile[] virtualFiles) {
 
         if (project == null || ArrayUtils.isEmpty(virtualFiles)) {
@@ -57,7 +58,5 @@ public class ApiDocProcessor extends AbsProcessor {
             // todo 目前就先打印下,后面可以做成导出或者调接口存储之类的
             System.out.println(new Gson().toJson(apiDocDTO));
         }
-
     }
-
 }

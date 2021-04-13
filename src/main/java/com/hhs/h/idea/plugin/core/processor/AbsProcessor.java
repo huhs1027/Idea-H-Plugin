@@ -2,6 +2,7 @@ package com.hhs.h.idea.plugin.core.processor;
 
 import com.hhs.h.idea.plugin.utils.ArrayUtil;
 import com.intellij.openapi.fileTypes.FileType;
+import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 
 import java.util.List;
@@ -38,4 +39,11 @@ public abstract class AbsProcessor {
         }
     }
 
+    /**
+     * 处理方法
+     *
+     * @param project      项目
+     * @param virtualFiles 虚拟文件列表
+     */
+    public abstract void process(Project project, VirtualFile[] virtualFiles);
 }
