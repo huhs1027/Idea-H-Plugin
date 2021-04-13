@@ -13,7 +13,12 @@ public class ApiMethodDTO {
     /**
      * 方法名字
      */
-    private String qualifiedName;
+    private String name;
+
+    /**
+     * 方法标题
+     */
+    private String title;
 
     /**
      * 接口描述
@@ -23,12 +28,27 @@ public class ApiMethodDTO {
     /**
      * 请求类型 post get等等
      */
-    private String request;
+    private String method;
+
+    /**
+     * 编码 表单，json
+     */
+    private String contentType;
 
     /**
      * 路径列表
      */
     private List<String> pathUrlList;
+
+    /**
+     * 方法参数列表
+     */
+    private List<ApiFieldDTO> paramList;
+
+    /**
+     * 方法返回值列表
+     */
+    private List<ApiFieldDTO> returnList;
 
     public String getDesc() {
         return desc;
@@ -38,20 +58,20 @@ public class ApiMethodDTO {
         this.desc = desc;
     }
 
-    public String getQualifiedName() {
-        return qualifiedName;
+    public String getName() {
+        return name;
     }
 
-    public void setQualifiedName(String qualifiedName) {
-        this.qualifiedName = qualifiedName;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getRequest() {
-        return request;
+    public String getMethod() {
+        return method;
     }
 
-    public void setRequest(String request) {
-        this.request = request;
+    public void setMethod(String method) {
+        this.method = method;
     }
 
     public List<String> getPathUrlList() {
@@ -60,5 +80,37 @@ public class ApiMethodDTO {
 
     public void setPathUrlList(List<String> pathUrlList) {
         this.pathUrlList = pathUrlList;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public List<ApiFieldDTO> getParamList() {
+        return paramList;
+    }
+
+    public void setParamList(List<ApiFieldDTO> paramList) {
+        this.paramList = paramList;
+    }
+
+    public List<ApiFieldDTO> getReturnList() {
+        return returnList;
+    }
+
+    public void setReturnList(List<ApiFieldDTO> returnList) {
+        this.returnList = returnList;
     }
 }

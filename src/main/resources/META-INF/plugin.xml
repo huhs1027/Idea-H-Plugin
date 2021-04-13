@@ -14,7 +14,8 @@
     -->
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
     <idea-version since-build="145"/>
-
+    <!--必须为企业版-->
+    <depends>com.intellij.modules.lang</depends>
     <depends>Git4Idea</depends>
 
     <extensions defaultExtensionNs="com.intellij">
@@ -30,7 +31,8 @@
         <!--apidocs start-->
 
         <!--projectView 右键action-->
-        <action id="com.hhs.h.idea.plugin.action.ApiDocsAction" class="com.hhs.h.idea.plugin.action.ApiDocsAction" text="生成ApiDocs" description="选取类生成ApiDocs">
+        <action id="com.hhs.h.idea.plugin.action.ApiDocsAction" class="com.hhs.h.idea.plugin.action.ApiDocsAction"
+                text="生成ApiDocs" description="选取类生成ApiDocs">
             <add-to-group group-id="ProjectViewPopupMenuModifyGroup" anchor="last"/>
         </action>
 

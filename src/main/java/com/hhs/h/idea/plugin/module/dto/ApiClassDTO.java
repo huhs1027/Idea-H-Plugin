@@ -13,12 +13,38 @@ public class ApiClassDTO {
     /**
      * 类全限定名
      */
-    private String qualifiedName;
+    private String name;
+
+    /**
+     * 类接口标题
+     */
+    private String title;
+
+    /**
+     * 类接口描述
+     */
+    private String docDesc;
 
     /**
      * 类下的方法列表
      */
     private List<ApiMethodDTO> methodList;
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDocDesc() {
+        return docDesc;
+    }
+
+    public void setDocDesc(String docDesc) {
+        this.docDesc = docDesc;
+    }
 
     public List<ApiMethodDTO> getMethodList() {
         return methodList;
@@ -28,11 +54,11 @@ public class ApiClassDTO {
         this.methodList = methodList;
     }
 
-    public String getQualifiedName() {
-        return qualifiedName;
+    public String getName() {
+        return name;
     }
 
-    public void setQualifiedName(String qualifiedName) {
-        this.qualifiedName = qualifiedName;
+    public void setName(String name) {
+        this.name = name;
     }
 }

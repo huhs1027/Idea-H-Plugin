@@ -2,6 +2,7 @@ package com.hhs.h.idea.plugin.core.resolver;
 
 import com.hhs.h.idea.plugin.module.dto.ApiClassDTO;
 import com.hhs.h.idea.plugin.module.dto.ApiDocDTO;
+import com.hhs.h.idea.plugin.module.dto.ApiMethodDTO;
 import com.hhs.h.idea.plugin.utils.ArrayUtil;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.project.Project;
@@ -9,7 +10,6 @@ import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiManager;
-import com.intellij.psi.util.PsiTreeUtil;
 import git4idea.branch.GitBranchUtil;
 import git4idea.repo.GitRepository;
 
@@ -37,7 +37,7 @@ public abstract class BaseApiDocResolver {
             return null;
         }
 
-        // 筛选
+        // 筛选符合的文件
         List<VirtualFile> filterFileList = virtualFiles.stream()
                 .filter(this::support)
                 .collect(Collectors.toList());
